@@ -3,8 +3,12 @@ local Acrylic = {}
 local RunService = game:GetService("RunService")
 local camera = workspace.CurrentCamera
 
-local Packages = script.Parent
-local Utils = require(Packages:WaitForChild("Utils"))
+local IsStudio = RunService:IsStudio()
+
+local loadstring = IsStudio and require(script:WaitForChild("Loadstring")) or loadstring
+local _HttpGet = IsStudio and game:GetService("ReplicatedStorage"):WaitForChild("HttpGet") or nil
+
+local Utils = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))()
 
 do
 	local function IsNotNaN(x)
