@@ -146,7 +146,7 @@ end
 function Acrylic:BindFrame(frame, properties)
 
 	if binds[frame] then
-		return binds[frame].parts
+		return binds[frame].__p
 	end
 
 	local uid = GenUid()
@@ -229,8 +229,8 @@ function Acrylic:BindFrame(frame, properties)
 	UpdateOrientation(true)
 	RunService:BindToRenderStep(uid, 2000, UpdateOrientation)
 
-	binds[frame] = { uid = uid; parts = parts; }
-	return binds[frame].parts
+	binds[frame] = { __uid = uid; __p = parts; __f = f; __d = __d; }
+	return binds[frame].__p
 end
 
 function Acrylic:Modify(frame, properties)
@@ -251,12 +251,15 @@ function Acrylic:UnbindFrame(frame)
 	local bind = binds[frame]
 	assert(bind, ('No part bindings exist for %s'):format(frame:GetFullName()))
 
-	RunService:UnbindFromRenderStep(bind.uid)
+	RunService:UnbindFromRenderStep(bind.__uid)
 
-	for _, v in pairs(bind.parts) do
+	for _, v in pairs(bind.__p) do
 		v:Destroy()
 	end
 
+	binds[frame].__d:Destroy()
+	binds[frame].__f:Destroy()
+	
 	binds[frame] = nil
 end
 
@@ -266,7 +269,7 @@ function Acrylic:HasBinding(frame)
 end
 
 function Acrylic:GetBoundParts(frame)
-	return binds[frame] and binds[frame].parts
+	return binds[frame] and binds[frame].__p
 end
 
 return Acrylic
