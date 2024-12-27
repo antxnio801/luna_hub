@@ -6,6 +6,14 @@ local Packages = script.Parent
 local Acrylic = require(Packages:WaitForChild("Acrylic"))
 local Signal = require(Packages:WaitForChild("Signal"))
 
+local IsStudio = game:GetService("RunService"):IsStudio()
+
+local loadstring = IsStudio and require(script:WaitForChild("Loadstring")) or loadstring
+local _HttpGet = IsStudio and game:GetService("ReplicatedStorage"):WaitForChild("HttpGet") or nil
+
+local Acrylic = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))()
+local Signal = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Signal.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Signal.lua'))()
+
 function Creator.New(__i, __p, __c)
 
 	local obj = Instance.new(__i)
