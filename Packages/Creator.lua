@@ -1,14 +1,9 @@
 local Creator = {}
 local Signals = {}
 
-local Packages = script.Parent
-
-local Acrylic = require(Packages:WaitForChild("Acrylic"))
-local Signal = require(Packages:WaitForChild("Signal"))
-
 local IsStudio = game:GetService("RunService"):IsStudio()
 
-local loadstring = IsStudio and require(script:WaitForChild("Loadstring")) or loadstring
+local loadstring = IsStudio and require(game:GetService("ReplicatedStorage"):WaitForChild("Loadstring")) or loadstring
 local _HttpGet = IsStudio and game:GetService("ReplicatedStorage"):WaitForChild("HttpGet") or nil
 
 local Acrylic = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))()
@@ -32,10 +27,10 @@ function Creator.New(__i, __p, __c)
 end
 
 function Creator:NewSignal(__f)
-	
+
 	local signal = Signal.new()
 	table.insert(Signals, signal:Connect(__f))
-	
+
 	return signal
 end
 
@@ -59,13 +54,13 @@ function Creator:BlurFrame(f)
 		Transparency = 0.98;
 		BrickColor = BrickColor.new('Institutional white');
 	})
-	
+
 	local __t = {}
-	
+
 	function __t:Remove()
 		Acrylic:UnbindFrame(f)
 	end
-	
+
 	return __t
 end
 
