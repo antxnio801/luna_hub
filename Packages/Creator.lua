@@ -1,16 +1,11 @@
 local Creator = {}
 local Signals = {}
 
-local IsStudio = game:GetService("RunService"):IsStudio()
+local Acrylic = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))()
+local Signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Signal.lua'))()
 
-local loadstring = IsStudio and require(game:GetService("ReplicatedStorage"):WaitForChild("Loadstring")) or loadstring
-local _HttpGet = IsStudio and game:GetService("ReplicatedStorage"):WaitForChild("HttpGet") or nil
-
-local Acrylic = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))()
-local Signal = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Signal.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Signal.lua'))()
-
-local Utils = IsStudio and loadstring(_HttpGet:InvokeServer('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))() or loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))()
-local __cg = IsStudio and game:GetService("Players").LocalPlayer.PlayerGui or game:GetService("CoreGui")
+local Utils = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))()
+local __cg = game:GetService("CoreGui")
 
 function Creator.New(__i, __p, __c)
 
@@ -30,11 +25,11 @@ function Creator.New(__i, __p, __c)
 end
 
 function Creator:NewMobileButton(__info)
-	
+
 	local __ui = __cg:FindFirstChild("MobileUI")
-	
+
 	if not __cg:FindFirstChild("MobileUI") then
-		
+
 		__ui = Instance.new("ScreenGui", __cg)
 		__ui.Name = "MobileUI"
 
