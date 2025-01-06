@@ -7,9 +7,9 @@ if getgenv().luna_hub then
 	return
 end
 
-getgenv().luna_hub = {}
+getgenv().luna_hub = true
 
-local luna_enviorment = getgenv().luna_hub
+local luna_enviorment = {}
 luna_enviorment.luna_version = game:HttpGet("https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/version.txt")
 
 local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Creator.lua"))()
