@@ -1,13 +1,13 @@
 if not LPH_OBFUSCATED then LPH_JIT_MAX = function(f) return f end; LPH_NO_VIRTUALIZE = function(f) return f end; end
 local IsMobile = game:GetService("UserInputService").TouchEnabled
 
-if getgenv().luna_hub then
+if _G.luna_hub then
 
 	warn("Luna hub is already loaded!")
 	return
 end
 
-getgenv().luna_hub = true
+_G.luna_hub = true
 
 local luna_enviorment = {}
 luna_enviorment.luna_version = game:HttpGet("https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/version.txt")
