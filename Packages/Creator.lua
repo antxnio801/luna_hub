@@ -1,7 +1,6 @@
 local Creator = {}
 local Signals = {}
 
-local Utils = loadstring(game:HttpGet("https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua"))()
 local __cg = game:GetService("CoreGui")
 
 function Creator.New(__i, __p, __c)
@@ -37,8 +36,6 @@ function Creator:NewMobileButton(__info)
 	local __b = Creator.New("ImageButton", {
 
 		Parent = __ui,
-
-		Name = tostring(Utils:RandomString()),
 		AnchorPoint = Vector2.new(1, 1),
 
 		Position = UDim2.fromScale(1, 1) + (__info.Position or UDim2.new()),
