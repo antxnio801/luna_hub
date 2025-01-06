@@ -1,9 +1,6 @@
 local Creator = {}
 local Signals = {}
 
-local Acrylic = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Acrylic.lua'))()
-local Signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Signal.lua'))()
-
 local Utils = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))()
 local __cg = game:GetService("CoreGui")
 
@@ -92,13 +89,6 @@ function Creator:NewMobileButton(__info)
 	return __t
 end
 
-function Creator:NewSignal(__f)
-
-	local signal = Signal.new()
-	table.insert(Signals, signal:Connect(__f))
-
-	return signal
-end
 
 function Creator:AddSignal(s, __f)
 	table.insert(Signals, s:Connect(__f))
@@ -111,23 +101,6 @@ function Creator:DisconnectAll()
 		local Connection = table.remove(Signals, Idx)
 		Connection:Disconnect()
 	end
-end
-
-function Creator:BlurFrame(f)
-
-	Acrylic:BindFrame(f, {
-
-		Transparency = 0.98;
-		BrickColor = BrickColor.new('Institutional white');
-	})
-
-	local __t = {}
-
-	function __t:Remove()
-		Acrylic:UnbindFrame(f)
-	end
-
-	return __t
 end
 
 return Creator
