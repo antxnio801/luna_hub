@@ -853,5 +853,5 @@ coroutine.resume(coroutine.create(LPH_NO_VIRTUALIZE(function()
 	Creator:DisconnectAll()
 	ESP:Toggle(false)
 	
-	getgenv().luna_hub = nil
+	_G.luna_hub = nil
 end)()))
