@@ -1,7 +1,7 @@
 local Creator = {}
 local Signals = {}
 
-local Utils = loadstring(game:HttpGet('https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua'))()
+local Utils = loadstring(game:HttpGet("https://raw.githubusercontent.com/antxnio801/luna_hub/refs/heads/main/Packages/Utils.lua"))()
 local __cg = game:GetService("CoreGui")
 
 function Creator.New(__i, __p, __c)
