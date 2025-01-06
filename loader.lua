@@ -3,7 +3,7 @@ local IsMobile = game:GetService("UserInputService").TouchEnabled
 
 if getgenv().luna_hub then
 
-	getgenv().luna_hub:Notify("Luna hub is already loaded!")
+	warn("Luna hub is already loaded!")
 	return
 end
 
